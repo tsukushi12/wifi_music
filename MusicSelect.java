@@ -22,6 +22,5 @@ public class MusicSelect extends JPanel{
         JButton btn = new JButton();
         btn.setText("test");
         add(btn);
-        btn.setText("bbb");
     }
 }
