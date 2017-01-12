@@ -1,14 +1,16 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 public class PlayBackButton extends JButton implements ActionListener{
-    
-    PlayBackButton(String filename, Dimension size){
+    PlayBack player;
+    PlayBackButton(String filename){
         setText(filename);
         setActionCommand(filename);
-        setPreferredSize(size);
-        btn.addActionListener(this);
+        addActionListener(this);
     }
-    public void actionPerfrmed(ActionEvent e){
+    public void actionPerformed(ActionEvent e){
         String filename = e.getActionCommand();
+        player = new PlayBack(MusicFiles.getFilePath(filename));
+        player.play();
     }
 }

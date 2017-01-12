@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 public class MusicSelect extends JPanel{
     BoxLayout layout;
+    String filenames[] = new MusicFiles().getFileNames();
     public static void main(String args[]){
         MainFrame frame = new MainFrame();
         CardPanel cpanel = new CardPanel();
@@ -9,7 +10,7 @@ public class MusicSelect extends JPanel{
         MusicSelect ms = new MusicSelect();
         cpanel.add(ms);
         //test
-        ms.testmethod();
+        ms.addButtons();
     }
     MusicSelect(){
         layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -22,5 +23,11 @@ public class MusicSelect extends JPanel{
         JButton btn = new JButton();
         btn.setText("test");
         add(btn);
+    }
+    public void addButtons(){
+        for (String filename: filenames){
+            PlayBackButton btn = new PlayBackButton(filename);
+            add(btn);
+        }
     }
 }

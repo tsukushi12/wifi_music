@@ -1,20 +1,26 @@
 import java.io.*;
 public class MusicFiles{
-    final String rootpath = "/wifi_music/music";
-    public File files[];
+    final static String rootpath = "/wifi_music/music/";
+    public File dir;
     public static void main(String args[]){
         MusicFiles f = new MusicFiles();
         f.output();
     }
     MusicFiles(){
-        File dir = new File(rootpath);
-        files = dir.listFiles();
+        dir = new File(rootpath);
     }
     public File[] getFiles(){
-        return files;
+        return dir.listFiles();
+    }
+    public String[] getFileNames(){
+        return dir.list();
+    }
+    public static File getFilePath(String filename){
+        return new File(rootpath + filename);
     }
     public void output(){
-        for (File file: files){
+        String files[] = dir.list();
+        for (String file: files){
             System.out.println(file);
         }
     }
