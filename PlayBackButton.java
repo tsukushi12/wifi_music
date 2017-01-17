@@ -12,7 +12,7 @@ public class PlayBackButton extends JButton implements ActionListener{
     }
     public void actionPerformed(ActionEvent e){
         if(player != null)
-            player.dest();
+            player.fdest();
         String filename = e.getActionCommand();
         player = new PlayBack(MusicFiles.getFilePath(filename));
         player.start();

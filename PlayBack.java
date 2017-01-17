@@ -27,7 +27,6 @@ public class PlayBack extends Thread {
             e.printStackTrace();
         }
     }
-
     PlayBack() {
         try {
             info = new DataLine.Info(SourceDataLine.class, format);
@@ -37,15 +36,12 @@ public class PlayBack extends Thread {
             e.printStackTrace();
         }
     }
-
     public void setAudioFile() {
 
     }
-
     public void run() {
         play();
     }
-
     public void play() {
         try {
             while (line.isOpen()) {
