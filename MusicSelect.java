@@ -10,7 +10,8 @@ public class MusicSelect extends JPanel{
         MusicSelect ms = new MusicSelect();
         cpanel.add(ms);
         //test
-        ms.addButtons();
+        ms.addMusicButtons();
+        ms.addMediaButton();
     }
     MusicSelect(){
         layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -24,10 +25,14 @@ public class MusicSelect extends JPanel{
         btn.setText("test");
         add(btn);
     }
-    public void addButtons(){
+    public void addMusicButtons(){
         for (String filename: filenames){
             PlayBackButton btn = new PlayBackButton(filename);
             add(btn);
         }
+    }
+    public void addMediaButton(){
+        MediaButton btn = new MediaButton();
+        add(btn);
     }
 }

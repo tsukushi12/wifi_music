@@ -1,26 +1,29 @@
 import java.awt.*;
-import java.util.EventListener;
-
-
 import javax.swing.*;
-import javax.swing.ebent.*;
-public class MediaButton extends JButton implements EventListener{
+import java.awt.event.*;
+public class MediaButton extends JButton implements ActionListener{
     final public String pause = "pause";
     final public String play = "play";
     public static void main(String args[]){
 
     }
     MediaButton(){
+        getT();
         buttonStatus();
     }
     public void buttonStatus(){
+
+        addActionListener(this);
+    }
+    public void actionPerformed(ActionEvent e){
+        PlayBack.playOrPause();
+        getT();
+    }
+    public void getT(){
         if(PlayBack.getStatus()){
             setText(pause);
         }else{
             setText(play);
         }
-    }
-    public void actionPerformed(ActionEvent e){
-        
     }
 }
