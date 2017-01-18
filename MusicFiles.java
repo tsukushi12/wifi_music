@@ -24,4 +24,7 @@ public class MusicFiles{
             System.out.println(file);
         }
     }
+    public File getTestFile(){
+        return dir.listFiles()[0];
+    }
 }
