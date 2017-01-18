@@ -49,7 +49,9 @@ public class Format {
                  String.valueOf(channel) + "," +
                  String.valueOf(endian);
     }
-
+    public int getMbyte(){
+        return 4;
+    }
     static AudioFormat.Encoding toEncoding(String encoding) {
         return new AudioFormat.Encoding(encoding);
     }
