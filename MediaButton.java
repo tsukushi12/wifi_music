@@ -16,7 +16,6 @@ public class MediaButton extends JButton implements ActionListener{
         addActionListener(this);
     }
     public void actionPerformed(ActionEvent e){
-        PlayBack.playOrPause();
         getT();
     }
     public void getT(){

@@ -1,15 +1,7 @@
-//ラインに書き込む部分とラインの制御を分ける。
-import javax.sound.sampled.*;
-import java.io.*;
 public class test{
-    static 
+    static String s;
     public static void main(String args[]){
-
-    }
-    test(){
-
-    }
-    public void play(){
-
+        if(33)
+        System.out.println(333);
     }
 }

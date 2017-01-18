@@ -3,11 +3,11 @@ import java.io.*;
 
 public class PlayBack extends Thread {
     byte frame[] = new byte[1600];
-    static boolean flag = true;
+    boolean playflag = true;
     AudioInputStream stream;
     AudioFormat format;
     DataLine.Info info;
-    static SourceDataLine line;
+    SourceDataLine line;
 
     public static void main(String args[]) {
         File audiofile = new File("/wifi_music/music/musicbox.wav");
@@ -36,16 +36,13 @@ public class PlayBack extends Thread {
             e.printStackTrace();
         }
     }
-    public void setAudioFile() {
-
-    }
     public void run() {
         play();
     }
     public void play() {
         try {
             while (line.isOpen()) {
-                while (flag) {
+                while (playflag) {
                     line.start();
                     if (stream.read(frame, 0, frame.length) == -1)
                         {
@@ -62,22 +59,21 @@ public class PlayBack extends Thread {
         }
     }
     //media
+    public void backTo(){
+    }
     public void dest(){
-        flag = false;
+        playflag = false;
         line.drain();
         line.stop();
         line.close();
     }
-    static void fdest() {
+    public void fdestruct() {
+        playflag = false;
+        line.stop();
+        line.flush();
         line.close();
     }
-    static void playOrPause(){
-        flag = !flag;
-    }
-    static boolean getStatus() {
-        return flag;
-    }
-    static boolean isRunning(){
-        return line.isOpen();
+    public void playOrPause(){
+        playflag = !playflag;
     }
 }
