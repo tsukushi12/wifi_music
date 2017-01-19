@@ -5,6 +5,10 @@ public class PlayBackButton extends JButton implements ActionListener{
     PlayBack player;
     PlayBackButton(String filename){
         setText(filename);
+        setBackground(Color.BLACK);
+        setForeground(Color.WHITE);
+        setFont(new Font("メイリオ", Font.PLAIN, 16));
+        setMaximumSize(new Dimension(4000, 40));
         setActionCommand(filename);
         addActionListener(this);
     }

@@ -5,13 +5,10 @@ public class MusicSelect extends JPanel{
     String filenames[] = new MusicFiles().getFileNames();
     public static void main(String args[]){
         MainFrame frame = new MainFrame();
-        CardPanel cpanel = new CardPanel();
-        frame.addPane(cpanel, BorderLayout.CENTER);
         MusicSelect ms = new MusicSelect();
-        cpanel.add(ms);
+        frame.addPane(ms, BorderLayout.CENTER);
         //test
         ms.addMusicButtons();
-        ms.addMediaButton();
     }
     MusicSelect(){
         layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -32,7 +29,7 @@ public class MusicSelect extends JPanel{
         }
     }
     public void addMediaButton(){
-        MediaButton btn = new MediaButton();
-        add(btn);
+  //      MediaButton btn = new MediaButton();
+  //      add(btn);
     }
 }
