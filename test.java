@@ -1,7 +1,22 @@
 public class test{
-    static String s;
+    boolean isplay = true;
+    AudioInputStream stream;
+    AudioFormat format;
+    DataLine.Info info;
+    SourceDataLine line;
     public static void main(String args[]){
-        if(33)
-        System.out.println(333);
+    }
+    test(){
+        
+    }
+
+
+    public void start(){
+        
+    }
+    static class PlayThread{
+        public void run(){
+
+        }
     }
 }
