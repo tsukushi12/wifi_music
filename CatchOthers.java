@@ -22,7 +22,7 @@ public class CatchOthers extends JPanel {
             try {
                 while (flag) {
                     DGReceiver dgr = new DGReceiver();
-                    msg = dgr.recv();
+                    msg = dgr.recvToFormat();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

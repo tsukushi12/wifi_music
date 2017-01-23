@@ -1,6 +1,5 @@
 import javax.sound.sampled.*;
 import java.io.*;
-import java.lang.reflect.Executable;
 
 public class Format {
     public AudioFormat format;
@@ -30,18 +29,19 @@ public class Format {
         channel = format.getChannels();
         endian = format.isBigEndian();
     }
-    Format(String format) {
-        String values[] = format.split(",");
+    Format(String f) {
+        String values[] = f.split(",");
         encoding = toEncoding(values[0]);
-        samplerate = toSampleRate(value[1]);
-        bitrate = toBitRate(value[2]);
-        channel = toChannel(value[3]);
-        endian = toIsBigEndian(value[4]);
-        title = value[5];
-        format = new AudioFormat(encoding,
+        samplerate = toSampleRate(values[1]);
+        bitrate = toBitRate(values[2]);
+        channel = toChannel(values[3]);
+        endian = toIsBigEndian(values[4]);
+        title = values[5];
+        format = new AudioFormat(
                                 samplerate,
                                 bitrate,
                                 channel,
+                                false,
                                 endian);
     }
     public String toS(){
