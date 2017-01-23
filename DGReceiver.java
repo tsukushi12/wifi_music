@@ -23,6 +23,9 @@ public class DGReceiver{
             e.printStackTrace();
         }
     }
+    public Format recvToFormat() throws IOException{
+        return new Format(recv());
+    }
     public String recv() throws IOException{
             sock.receive(packet);
             String message = new String(buf, 0, packet.getLength());

@@ -9,6 +9,7 @@ public class Format {
     public int bitrate;
     public int channel;
     public boolean endian;
+    public String title = "";
     public static void main(String args[]) {
         try {
             File testfile = new MusicFiles().getTestFile();
@@ -36,6 +37,7 @@ public class Format {
         bitrate = toBitRate(value[2]);
         channel = toChannel(value[3]);
         endian = toIsBigEndian(value[4]);
+        title = value[5];
         format = new AudioFormat(encoding,
                                 samplerate,
                                 bitrate,
@@ -47,7 +49,11 @@ public class Format {
                  String.valueOf(samplerate) + "," +
                  String.valueOf(bitrate) + "," +
                  String.valueOf(channel) + "," +
-                 String.valueOf(endian);
+                 String.valueOf(endian) + "," +
+                 title; 
+    }
+    public void addTitle(String t){
+        title = t;
     }
     public int getMbyte(){
         return 4;
