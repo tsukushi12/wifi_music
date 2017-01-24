@@ -5,13 +5,13 @@ public class DGReceiver{
     public String bindIp6 = "::";
     public int port = 10100;
     public DatagramSocket sock;
-    public byte[] buf = new byte[1024];
+    public byte[] buf = new byte[10000];
     public DatagramPacket packet = new DatagramPacket(buf, buf.length);
     public static void main(String args[]){
         DGReceiver receiver = new DGReceiver();
         try{
-            String msg = receiver.recv();
-            System.out.println(msg);
+            Format msg = receiver.recvToFormat();
+            System.out.println(msg.toS());
         }catch(Exception e){
             e.printStackTrace();
         }

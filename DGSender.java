@@ -18,6 +18,7 @@ public class DGSender {
             AudioInputStream stream = AudioSystem.getAudioInputStream(testfile);
             AudioFormat af = stream.getFormat();
             Format format = new Format(af);
+            format.addTitle(testfile.toString());
             DGSender sender = new DGSender();
             sender.start();
             sender.send(format.toS());

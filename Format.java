@@ -55,6 +55,9 @@ public class Format {
     public void addTitle(String t){
         title = t;
     }
+    public String getTitle(){
+        return title;
+    }
     public int getMbyte(){
         return 4;
     }
@@ -62,7 +65,7 @@ public class Format {
         return new AudioFormat.Encoding(encoding);
     }
     static float toSampleRate(String sr){
-        return (float)Integer.parseInt(sr);
+        return Float.parseFloat(sr);
     }
     static int toBitRate(String br){
         return Integer.parseInt(br);
@@ -73,5 +76,4 @@ public class Format {
     static boolean toIsBigEndian(String be){
         return Boolean.valueOf(be);
     }
-    
 }
