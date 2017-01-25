@@ -2,10 +2,10 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
-public class PlayBackButton extends JButton implements ActionListener{
+public class OtherPlayBackButton extends JButton implements ActionListener{
     PlayBack player;
     LinePlayBack lpb = LinePlayBack.getInstance();
-    PlayBackButton(String filename){
+    OtherPlayBackButton(String filename){
         setText(filename);
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);

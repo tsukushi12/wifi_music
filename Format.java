@@ -1,6 +1,6 @@
 import javax.sound.sampled.*;
 import java.io.*;
-
+import java.util.*;
 public class Format {
     public AudioFormat format;
     public AudioFormat.Encoding encoding;
@@ -78,6 +78,6 @@ public class Format {
     }
     class OtherMeta{
         public String ip;
-        public Time time;
+        public Date time;
     }
 }
