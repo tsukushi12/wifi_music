@@ -20,5 +20,7 @@ public class PlayBackButton extends JButton implements ActionListener{
         lpb.setLine(audiofile);
             LinePlayBack.SelfPlayThread playThread = lpb.new SelfPlayThread();
             playThread.start();
+            SendThread sendThread = new SendThread();
+            sendThread.start();
     }
 }

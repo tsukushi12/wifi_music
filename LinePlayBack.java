@@ -2,8 +2,8 @@ import javax.sound.sampled.*;
 import java.io.*;
 
 public class LinePlayBack {
-    public boolean isplay = true;
-    public boolean isend = true;
+    public boolean isplay = false;
+    public boolean isend = false;
     public Player player = Player.getInstance();
     public byte frame[] = new byte[1600];
     public Format format;
@@ -24,7 +24,6 @@ public class LinePlayBack {
     public static LinePlayBack getInstance() {
         return linePlayBack;
     }
-
     public void setLine(File audiofile) {
         try {
             isend = true;
@@ -42,6 +41,12 @@ public class LinePlayBack {
     public void clear(){
         isend = false;
         player.reset();
+    }
+    public boolean isPlay(){
+        return isplay && isend;
+    }
+    public Format getFormat(){
+        return format;
     }
     class SelfPlayThread extends Thread {
         public void run() {

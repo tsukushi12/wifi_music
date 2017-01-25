@@ -76,4 +76,8 @@ public class Format {
     static boolean toIsBigEndian(String be){
         return Boolean.valueOf(be);
     }
+    class OtherMeta{
+        public String ip;
+        public Time time;
+    }
 }

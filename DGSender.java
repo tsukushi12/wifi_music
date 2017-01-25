@@ -21,7 +21,7 @@ public class DGSender {
             format.addTitle(testfile.toString());
             DGSender sender = new DGSender();
             sender.start();
-            sender.send(format.toS());
+            sender.sendAudioMeta(format.toS());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,6 +29,11 @@ public class DGSender {
 
     DGSender() throws UnknownHostException {
         ip = InetAddress.getByName(ip4);
+    }
+
+    DGSender(int p) throws UnknownHostException {
+        ip = InetAddress.getByName(ip4);
+        port = p;
     }
 
     DGSender(String ipaddress) throws UnknownHostException {
@@ -41,13 +46,14 @@ public class DGSender {
         }
     }
 
-    public void start() {
-        try {
-            dest = new InetSocketAddress(ip, port);
-            sock = new DatagramSocket();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void start() throws SocketException {
+        dest = new InetSocketAddress(ip, port);
+        sock = new DatagramSocket();
+    }
+
+    public void sendFrame(byte frame[]) throws IOException {
+        packet = new DatagramPacket(frame, 0, frame.length, dest);
+        sock.send(packet);
     }
 
     public void addMeta(String str) {
@@ -56,16 +62,8 @@ public class DGSender {
         packet = new DatagramPacket(buf, 0, buf.length, dest);
     }
 
-    public void sendMetaAudio() {
-        try {
-            sock.send(packet);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void send(String str) {
+    public void sendAudioMeta(String str) throws IOException {
         addMeta(str);
-        sendMetaAudio();
+        sock.send(packet);
     }
 }
