@@ -4,14 +4,15 @@ import java.util.*;
 
 public class CatchOthers extends JPanel {
     static Map<String, Format> others = new HashMap<String, Format>();
-    public static void main(String args[]) {
 
+    public static void main(String args[]) {
     }
 
     CatchOthers() {
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         Catch c = new Catch();
+        c.start();
     }
 
     public void start() {
@@ -30,7 +31,8 @@ public class CatchOthers extends JPanel {
 
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            setBackground(Color.BLACK);
+                            OtherPlayBackButton opbutton = new OtherPlayBackButton(format.getTitle());
+                            add(apbutton)
                         }
                     });
                 }
