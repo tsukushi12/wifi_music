@@ -6,6 +6,7 @@ public class SelectModePanel extends JPanel {
 
     CardPanel card = CardPanel.getInstance();
     String[] cards = CardPanel.cards;
+
     public static void main(String args[]) {
         MainFrame frame = new MainFrame();
         CardPanel card = CardPanel.getInstance();
@@ -31,6 +32,11 @@ public class SelectModePanel extends JPanel {
 
         public void actionPerformed(ActionEvent e) {
             String mode = e.getActionCommand();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    card.show(mode);
+                }
+            });
         }
     }
 }

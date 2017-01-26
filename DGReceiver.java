@@ -36,6 +36,7 @@ public class DGReceiver {
     }
 
     public Format recvToFormat() throws IOException {
+        recv();
         String message = new String(buf, 0, packet.getLength());
         Format format = new Format(message);
         format.setIp(packet.getAddress());
@@ -43,8 +44,12 @@ public class DGReceiver {
         return format;
     }
 
-    public byte[] recv() throws IOException {
+    public void recv() throws IOException {
         sock.receive(packet);
+    }
+
+    public byte[] recvToPCM() throws IOException{
+        recv();
         return buf;
     }
 }
