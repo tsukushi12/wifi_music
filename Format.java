@@ -1,6 +1,7 @@
 import javax.sound.sampled.*;
 import java.io.*;
-
+import java.util.*;
+import java.net.*;
 public class Format {
     public AudioFormat format;
     public AudioFormat.Encoding encoding;
@@ -9,6 +10,8 @@ public class Format {
     public int channel;
     public boolean endian;
     public String title = "";
+    public Date time;
+    public InetAddress ip;
     public static void main(String args[]) {
         try {
             File testfile = new MusicFiles().getTestFile();
@@ -61,6 +64,12 @@ public class Format {
     public int getMbyte(){
         return 4;
     }
+    public void setTime(Date t){
+        time = t;
+    }
+    public void setIp(InetAddress i){
+        ip = i;
+    }
     static AudioFormat.Encoding toEncoding(String encoding) {
         return new AudioFormat.Encoding(encoding);
     }
@@ -75,9 +84,5 @@ public class Format {
     }
     static boolean toIsBigEndian(String be){
         return Boolean.valueOf(be);
-    }
-    class OtherMeta{
-        public String ip;
-        public Time time;
     }
 }
