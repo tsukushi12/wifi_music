@@ -24,6 +24,7 @@ public class LinePlayBack {
     public static LinePlayBack getInstance() {
         return linePlayBack;
     }
+
     public void setLine(File audiofile) {
         try {
             isend = true;
@@ -38,16 +39,20 @@ public class LinePlayBack {
             e.printStackTrace();
         }
     }
-    public void clear(){
+
+    public void clear() {
         isend = false;
         player.reset();
     }
-    public boolean isPlay(){
+
+    public boolean isPlay() {
         return isplay && isend;
     }
-    public Format getFormat(){
+
+    public Format getFormat() {
         return format;
     }
+
     class SelfPlayThread extends Thread {
         public void run() {
             try {

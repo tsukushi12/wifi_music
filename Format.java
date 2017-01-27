@@ -70,6 +70,9 @@ public class Format {
     public void setIp(InetAddress i){
         ip = i;
     }
+    public int getSecondSize(){
+        return (int)samplerate * bitrate * channel;
+    }
     static AudioFormat.Encoding toEncoding(String encoding) {
         return new AudioFormat.Encoding(encoding);
     }

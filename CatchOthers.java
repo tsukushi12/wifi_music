@@ -19,7 +19,7 @@ public class CatchOthers extends JPanel {
     CatchOthers() {
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
-        label = new JLabel("0");
+        label = new JLabel(String.valueOf(CatchOthers.others.size()) + "件");
         label.setMaximumSize(new Dimension(4000, 30));
         label.setBackground(Color.GRAY);
         label.setOpaque(true);
@@ -51,6 +51,8 @@ public class CatchOthers extends JPanel {
                                 public void run() {
                                     OtherPlayBackButton opbutton = new OtherPlayBackButton(format.getTitle());
                                     add(opbutton);
+                                    label.setText(String.valueOf(CatchOthers.others.size()) + "件");
+                                    label.validate();
                                     validate();
                                 }
                             });
