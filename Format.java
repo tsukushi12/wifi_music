@@ -67,7 +67,7 @@ public class Format {
     public AudioFormat getAudioFormat(){
         return format;
     }
-    public InetAdderss getSender(){
+    public InetAddress getSender(){
         return ip;
     }
     public void setTime(Date t){
