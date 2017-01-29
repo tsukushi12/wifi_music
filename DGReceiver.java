@@ -29,9 +29,10 @@ public class DGReceiver {
         }
     }
 
-    DGReceiver(InetAddress i) throws SocketException {
+    DGReceiver(InetAddress i, byte[] b) throws SocketException {
         port = 10101;
         ip = i;
+        buf = b;
         sock = new DatagramSocket(port, ip);
     }
 

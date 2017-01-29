@@ -64,14 +64,22 @@ public class Format {
     public int getMbyte(){
         return 4;
     }
+    public AudioFormat getAudioFormat(){
+        return format;
+    }
+    public InetAdderss getSender(){
+        return ip;
+    }
     public void setTime(Date t){
         time = t;
     }
     public void setIp(InetAddress i){
         ip = i;
     }
-    public int getSecondSize(){
-        return (int)samplerate * bitrate * channel;
+
+    public byte[] getSecondSize(){
+        int i = ((int)samplerate * bitrate * channel) * (20 / 1000);
+        return new byte[i];
     }
     static AudioFormat.Encoding toEncoding(String encoding) {
         return new AudioFormat.Encoding(encoding);
