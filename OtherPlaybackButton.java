@@ -15,6 +15,7 @@ public class OtherPlayBackButton extends JButton implements ActionListener{
         addActionListener(this);
     }
     public void actionPerformed(ActionEvent e){
-
+        String othername = e.getActionCommand()
+        
     }
 }

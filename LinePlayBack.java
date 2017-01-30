@@ -5,9 +5,10 @@ public class LinePlayBack {
     public boolean isplay = false;
     public boolean isend = false;
     public Player player = Player.getInstance();
-    public byte frame[] = new byte[1600];
+    public byte frame[];
     public Format format;
     public AudioInputStream stream;
+    public DGSender sender;
     private static LinePlayBack linePlayBack = new LinePlayBack();
 
     public static void main(String args[]) {
@@ -35,6 +36,8 @@ public class LinePlayBack {
             player.reset();
             format = new Format(af);
             format.addTitle(audiofile.getName());
+            frame = format.getSecondSize();
+            sender = new DGSender(10101);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +64,9 @@ public class LinePlayBack {
                         if (stream.read(frame, 0, frame.length) == -1) {
                             isend = false;
                         }
+                        sender.sendFrame(frame);
                         player.play(frame);
+                        Thread.seep(18);
                     }
                 }
             } catch (Exception e) {
