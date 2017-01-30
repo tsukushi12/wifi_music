@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
 public class PlayBackButton extends JButton implements ActionListener{
-    PlayBack player;
     LinePlayBack lpb = LinePlayBack.getInstance();
     PlayBackButton(String filename){
         setText(filename);

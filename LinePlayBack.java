@@ -66,7 +66,7 @@ public class LinePlayBack {
                         }
                         sender.sendFrame(frame);
                         player.play(frame);
-                        Thread.seep(18);
+                        Thread.sleep(18);
                     }
                 }
             } catch (Exception e) {

@@ -5,12 +5,15 @@ public class OtherPlayBack {
     public Player player = Player.getInstance();
     public DGReceiver receiver;
     public boolean playflag = true;
-
+    private static OtherPlayBack otherPlayBack = new OtherPlayBack();
     public static void main(String args[]) {
 
     }
 
-    OtherPlayBack() {
+    private OtherPlayBack() {
+    }
+    public static OtherPlayBack getInstance(){
+        return otherPlayBack;
     }
 
     public void setLine(Format f) throws Exception {
@@ -19,7 +22,7 @@ public class OtherPlayBack {
         receiver = new DGReceiver(format.ip, format.getSecondSize());
     }
 
-    class Play {
+    class OtherPlayThread extends Thread {
         public void run() {
             byte[] buf = format.getSecondSize();
             try {
