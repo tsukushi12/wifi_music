@@ -48,7 +48,7 @@ public class DGSender {
 
     public void start() throws SocketException {
         dest = new InetSocketAddress(ip, port);
-        sock = new DatagramSocket();
+        sock = new DatagramSocket(port);
     }
 
     public void sendFrame(byte frame[]) throws IOException {

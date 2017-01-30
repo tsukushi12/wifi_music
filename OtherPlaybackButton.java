@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.*;
 
 public class OtherPlayBackButton extends JButton implements ActionListener {
-    public OtherPlayBack opb = OtherPlayBack.getInstance();
+    public OtherPlayBack opb;
 
     OtherPlayBackButton(String filename) {
         setText(filename);
@@ -18,6 +18,9 @@ public class OtherPlayBackButton extends JButton implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         try {
+            if(opb != null)
+                opb.stop();
+            opb = new OtherPlayBack();
             String othername = e.getActionCommand();
             Format format = CatchOthers.others.get(othername);
             opb.setLine(format);

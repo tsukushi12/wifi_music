@@ -13,8 +13,8 @@ public class Player {
         return player;
     }
 
-    public void setFormat(AudioFormat af) throws LineUnavailableException {
-        af = af;
+    public void setFormat(AudioFormat a) throws LineUnavailableException {
+        af = a;
         DataLine.Info info = new DataLine.Info(SourceDataLine.class, af);
         line = (SourceDataLine) AudioSystem.getLine(info);
         line.open();

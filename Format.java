@@ -41,10 +41,12 @@ public class Format {
         endian = toIsBigEndian(values[4]);
         title = values[5];
         format = new AudioFormat(
+                                encoding,
                                 samplerate,
                                 bitrate,
                                 channel,
-                                false,
+                                bitrate * channel / 8,
+                                samplerate,
                                 endian);
     }
     public String toS(){
@@ -78,7 +80,7 @@ public class Format {
     }
 
     public byte[] getSecondSize(){
-        int i = ((int)samplerate * bitrate * channel) * (20 / 1000);
+        int i = ((int)samplerate * bitrate * channel * 20 / 1000);
         return new byte[i];
     }
     static AudioFormat.Encoding toEncoding(String encoding) {

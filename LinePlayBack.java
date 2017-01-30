@@ -38,6 +38,7 @@ public class LinePlayBack {
             format.addTitle(audiofile.getName());
             frame = format.getSecondSize();
             sender = new DGSender(10101);
+            sender.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,7 +67,7 @@ public class LinePlayBack {
                         }
                         sender.sendFrame(frame);
                         player.play(frame);
-                        Thread.sleep(18);
+                        Thread.sleep(10);
                     }
                 }
             } catch (Exception e) {

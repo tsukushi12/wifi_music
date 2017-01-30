@@ -53,4 +53,7 @@ public class DGReceiver {
         recv();
         return buf;
     }
+    public void close(){
+        sock.close();
+    }
 }
