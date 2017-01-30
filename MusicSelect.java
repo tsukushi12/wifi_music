@@ -1,15 +1,23 @@
 import java.awt.*;
 import javax.swing.*;
-public class MusicSelect extends JPanel{
+
+public class MusicSelect extends JPanel {
     BoxLayout layout;
     String filenames[] = new MusicFiles().getFileNames();
-    public static void main(String args[]){
-        MainFrame frame = new MainFrame();
-        MusicSelect ms = new MusicSelect();
-        frame.addPane(ms, BorderLayout.CENTER);
-        ms.addMusicButtons();
+
+    public static void main(String args[]) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                MainFrame frame = new MainFrame();
+                MusicSelect ms = new MusicSelect();
+                frame.addPane(ms, BorderLayout.CENTER);
+                ms.addMusicButtons();
+            }
+        });
+
     }
-    MusicSelect(){
+
+    MusicSelect() {
         layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         setBackground(Color.GRAY);
@@ -22,22 +30,26 @@ public class MusicSelect extends JPanel{
         label.setHorizontalAlignment(JLabel.CENTER);
         add(label);
     }
+
     public void addButton(PlayBackButton btn) {
         add(btn);
     }
-    public void testmethod(){
+
+    public void testmethod() {
         JButton btn = new JButton();
         btn.setText("test");
         add(btn);
     }
-    public void addMusicButtons(){
-        for (String filename: filenames){
+
+    public void addMusicButtons() {
+        for (String filename : filenames) {
             PlayBackButton btn = new PlayBackButton(filename);
             add(btn);
         }
     }
-    public void addMediaButton(){
-  //      MediaButton btn = new MediaButton();
-  //      add(btn);
+
+    public void addMediaButton() {
+        //      MediaButton btn = new MediaButton();
+        //      add(btn);
     }
 }

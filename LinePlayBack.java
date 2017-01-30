@@ -3,7 +3,6 @@ import java.io.*;
 
 public class LinePlayBack {
     public boolean isplay = false;
-    public boolean isend = false;
     public Player player = Player.getInstance();
     public byte frame[];
     public Format format;
@@ -20,6 +19,12 @@ public class LinePlayBack {
     }
 
     private LinePlayBack() {
+        try{
+            sender = new DGSender(10101);
+            sender.start();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static LinePlayBack getInstance() {
@@ -28,7 +33,6 @@ public class LinePlayBack {
 
     public void setLine(File audiofile) {
         try {
-            isend = true;
             isplay = true;
             stream = AudioSystem.getAudioInputStream(audiofile);
             AudioFormat af = stream.getFormat();
@@ -37,20 +41,17 @@ public class LinePlayBack {
             format = new Format(af);
             format.addTitle(audiofile.getName());
             frame = format.getSecondSize();
-            sender = new DGSender(10101);
-            sender.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void clear() {
-        isend = false;
         player.reset();
     }
 
     public boolean isPlay() {
-        return isplay && isend;
+        return isplay;
     }
 
     public Format getFormat() {
@@ -58,6 +59,7 @@ public class LinePlayBack {
     }
 
     class SelfPlayThread extends Thread {
+        public boolean isend = true;
         public void run() {
             try {
                 while (isend) {
@@ -67,12 +69,15 @@ public class LinePlayBack {
                         }
                         sender.sendFrame(frame);
                         player.play(frame);
-                        Thread.sleep(10);
+                        Thread.sleep(18);
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        public void end(){
+            isend = false;
         }
     }
 }

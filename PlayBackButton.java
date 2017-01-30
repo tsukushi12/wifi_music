@@ -2,9 +2,14 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
-public class PlayBackButton extends JButton implements ActionListener{
+
+public class PlayBackButton extends JButton implements ActionListener {
     LinePlayBack lpb = LinePlayBack.getInstance();
-    PlayBackButton(String filename){
+    SendThread st = SendThread.getInstance();
+    LinePlayBack.SelfPlayThread playThread;
+    SendThread.Send sThread;
+
+    PlayBackButton(String filename) {
         setText(filename);
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);
@@ -13,13 +18,18 @@ public class PlayBackButton extends JButton implements ActionListener{
         setActionCommand(filename);
         addActionListener(this);
     }
-    public void actionPerformed(ActionEvent e){
+
+    public void actionPerformed(ActionEvent e) {
         String filename = e.getActionCommand();
         File audiofile = MusicFiles.getFilePath(filename);
         lpb.setLine(audiofile);
-            LinePlayBack.SelfPlayThread playThread = lpb.new SelfPlayThread();
-            playThread.start();
-            SendThread sendThread = new SendThread();
-            sendThread.start();
+        if (playThread != null)
+            playThread.end();
+        playThread = lpb.new SelfPlayThread();
+        playThread.start();
+        if (sThread != null)
+            sThread.end();
+        sThread = st.new Send(lpb.getFormat().toS());
+        sThread.start();
     }
 }

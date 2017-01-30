@@ -45,10 +45,12 @@ public class DGSender {
             port = p;
         }
     }
-
-    public void start() throws SocketException {
+    public void start() throws Exception {
         dest = new InetSocketAddress(ip, port);
-        sock = new DatagramSocket(port);
+        sock = new DatagramSocket(new InetSocketAddress(InetAddress.getLocalHost(), port));
+    }
+    public void close(){
+        sock.close();
     }
 
     public void sendFrame(byte frame[]) throws IOException {
