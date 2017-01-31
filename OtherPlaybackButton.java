@@ -4,7 +4,19 @@ import java.awt.event.*;
 import java.io.*;
 
 public class OtherPlayBackButton extends JButton implements ActionListener {
-    public OtherPlayBack opb;
+    public OtherPlayBack opb = new OtherPlayBack();
+    public OtherPlayBack.OtherPlayThread playThread;
+
+    public static void main(String args[]) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                MainFrame frame = new MainFrame();
+                CatchOthers coPanel = new CatchOthers();
+                coPanel.add(new OtherPlayBackButton("test"));
+                frame.addPane(coPanel, BorderLayout.CENTER);
+            }
+        });
+    }
 
     OtherPlayBackButton(String filename) {
         setText(filename);
@@ -12,20 +24,19 @@ public class OtherPlayBackButton extends JButton implements ActionListener {
         setForeground(Color.WHITE);
         setFont(new Font("メイリオ", Font.PLAIN, 16));
         setMaximumSize(new Dimension(4000, 40));
-
+        setActionCommand(filename);
         addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
         try {
-            if(opb != null)
-                opb.stop();
-            opb = new OtherPlayBack();
             String othername = e.getActionCommand();
             Format format = CatchOthers.others.get(othername);
             opb.setLine(format);
-            OtherPlayBack.OtherPlayThread otherPlayThread = opb.new OtherPlayThread();
-            otherPlayThread.start();
+            if (playThread != null)
+                playThread.end();
+            playThread = opb.new OtherPlayThread();
+            playThread.start();
         } catch (Exception er) {
             er.printStackTrace();
         }

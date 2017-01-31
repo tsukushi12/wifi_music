@@ -4,7 +4,7 @@ import javax.sound.sampled.*;
 
 public class DGSender {
     static final String ip6 = "ff02::1";
-    static final String ip4 = "255.255.255.255";
+    static final String ip4 = "192.168.0.255";
     public InetAddress ip;
     public int port = 10100;
     public DatagramSocket sock;
@@ -47,7 +47,7 @@ public class DGSender {
     }
     public void start() throws Exception {
         dest = new InetSocketAddress(ip, port);
-        sock = new DatagramSocket(new InetSocketAddress(InetAddress.getLocalHost(), port));
+        sock = new DatagramSocket();
     }
     public void close(){
         sock.close();

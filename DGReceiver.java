@@ -33,7 +33,8 @@ public class DGReceiver {
         port = 10101;
         ip = i;
         buf = b;
-        sock = new DatagramSocket(port, ip);
+        sock = new DatagramSocket();
+        sock.connect(new InetSocketAddress(ip, port));
     }
 
     public Format recvToFormat() throws IOException {

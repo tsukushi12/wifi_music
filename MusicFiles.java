@@ -1,6 +1,6 @@
 import java.io.*;
 public class MusicFiles{
-    final static String rootpath = "/wifi_music/music/";
+    final static String rootpath = "./music/";
     public File dir;
     public static void main(String args[]){
         MusicFiles f = new MusicFiles();

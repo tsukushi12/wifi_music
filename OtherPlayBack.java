@@ -4,7 +4,6 @@ public class OtherPlayBack {
     public Format format;
     public Player player = Player.getInstance();
     public DGReceiver receiver;
-    public boolean playflag = true;
     public static void main(String args[]) {
 
     }
@@ -17,15 +16,14 @@ public class OtherPlayBack {
         player.setFormat(format.getAudioFormat());
         receiver = new DGReceiver(format.ip, format.getSecondSize());
     }
-    public void stop(){
-        playflag = false;
-        Thread.sleep(20);
-    }
     class OtherPlayThread extends Thread {
+        public boolean playflag = true;
         public void run() {
             byte[] buf = format.getSecondSize();
             try {
                 while (playflag) {
+                    
+            System.out.println("aaaa");
                     buf = receiver.recvToPCM();
                     player.play(buf);
                 }
@@ -33,6 +31,9 @@ public class OtherPlayBack {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        public void end(){
+            playflag = false;
         }
     }
 }
