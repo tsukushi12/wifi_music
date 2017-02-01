@@ -31,5 +31,9 @@ public class PlayBackButton extends JButton implements ActionListener {
             sThread.end();
         sThread = st.new Send(lpb.getFormat().toS());
         sThread.start();
+        try{
+        playThread.join();
+        }catch(Exception er){er.printStackTrace(); }
+        sThread.end();
     }
 }

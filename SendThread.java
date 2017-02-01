@@ -1,9 +1,9 @@
 import java.io.*;
 
-
 public class SendThread {
     public DGSender sender;
     private static SendThread sendThread = new SendThread();
+    public LinePlayBack lpb = LinePlayBack.getInstance();
 
     public static void main(String arg[]) {
         SendThread st = SendThread.getInstance();
@@ -26,16 +26,16 @@ public class SendThread {
     class Send extends Thread {
         public boolean isend = true;
         public String format;
-        Send(String s){
+
+        Send(String s) {
             format = s;
         }
+
         public void run() {
             try {
-                while (isend) {
-                    while (true) {
-                        sender.sendAudioMeta(format);
-                        Thread.sleep(3000);
-                    }
+                while (this.isend) {
+                    sender.sendAudioMeta(format);
+                    Thread.sleep(3000);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

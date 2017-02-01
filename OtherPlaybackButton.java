@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.*;
 
 public class OtherPlayBackButton extends JButton implements ActionListener {
-    public OtherPlayBack opb = new OtherPlayBack();
+    public OtherPlayBack opb;
     public OtherPlayBack.OtherPlayThread playThread;
 
     public static void main(String args[]) {
@@ -32,6 +32,7 @@ public class OtherPlayBackButton extends JButton implements ActionListener {
         try {
             String othername = e.getActionCommand();
             Format format = CatchOthers.others.get(othername);
+            opb = new OtherPlayBack();
             opb.setLine(format);
             if (playThread != null)
                 playThread.end();

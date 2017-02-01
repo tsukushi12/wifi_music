@@ -13,9 +13,14 @@ public class DGReceiver {
 
     public static void main(String args[]) {
         try {
-            DGReceiver receiver = new DGReceiver();
-            Format msg = receiver.recvToFormat();
-            System.out.println(msg.toS());
+            //////////////////////////////////////////////////////
+            //            DGReceiver receiver = new DGReceiver();
+            //            Format msg = receiver.recvToFormat();
+            //            System.out.println(msg.toS());
+            //////////////////////////////////////////////////////////////////
+            DGReceiver recv = new DGReceiver(InetAddress.getByName("0.0.0.0"), new byte[1000]);
+            byte[] a = recv.recvToPCM();
+            System.out.println(a);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,12 +34,12 @@ public class DGReceiver {
         }
     }
 
-    DGReceiver(InetAddress i, byte[] b) throws SocketException {
+    DGReceiver(InetAddress i, byte[] b) throws Exception {
         port = 10101;
         ip = i;
         buf = b;
-        sock = new DatagramSocket();
-        sock.connect(new InetSocketAddress(ip, port));
+        sock = new DatagramSocket(port, InetAddress.getByName("0.0.0.0"));
+        //   sock.connect(ip, port);
     }
 
     public Format recvToFormat() throws IOException {
@@ -50,11 +55,13 @@ public class DGReceiver {
         sock.receive(packet);
     }
 
-    public byte[] recvToPCM() throws IOException{
+    public byte[] recvToPCM() throws IOException {
         recv();
         return buf;
     }
-    public void close(){
-        sock.close();
+
+    public void close() {
+        if (sock.isClosed())
+            sock.close();
     }
 }

@@ -14,14 +14,20 @@ public class DGSender {
 
     public static void main(String args[]) {
         try {
-            File testfile = new MusicFiles().getTestFile();
-            AudioInputStream stream = AudioSystem.getAudioInputStream(testfile);
-            AudioFormat af = stream.getFormat();
-            Format format = new Format(af);
-            format.addTitle(testfile.toString());
-            DGSender sender = new DGSender();
-            sender.start();
-            sender.sendAudioMeta(format.toS());
+////////////////////////////////////////////////////////
+//            File testfile = new MusicFiles().getTestFile();
+//            AudioInputStream stream = AudioSystem.getAudioInputStream(testfile);
+//            AudioFormat af = stream.getFormat();
+//            Format format = new Format(af);
+//            format.addTitle(testfile.toString());
+//            DGSender sender = new DGSender();
+//            sender.start();
+//            sender.sendAudioMeta(format.toS());
+/////////////////////////////////////////////////////////////////
+        DGSender sender = new DGSender(10101);
+        sender.start();
+        sender.sendFrame("test".getBytes());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

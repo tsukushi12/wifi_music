@@ -67,8 +67,8 @@ public class LinePlayBack {
                         if (stream.read(frame, 0, frame.length) == -1) {
                             isend = false;
                         }
-                        player.play(frame);
                         sender.sendFrame(frame);
+                        player.play(cpframe);
                         Thread.sleep(18);
                     }
                 }
