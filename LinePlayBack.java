@@ -19,10 +19,10 @@ public class LinePlayBack {
     }
 
     private LinePlayBack() {
-        try{
+        try {
             sender = new DGSender(10101);
             sender.start();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -60,23 +60,25 @@ public class LinePlayBack {
 
     class SelfPlayThread extends Thread {
         public boolean isend = true;
+
         public void run() {
             try {
                 while (isend) {
                     while (isplay && isend) {
-                        if (stream.read(frame, 0, frame.length) == -1) {
+                       if (stream.read(frame, 0, frame.length) == -1) {
                             isend = false;
                         }
+                        byte[] b = frame.clone();
                         sender.sendFrame(frame);
-                        player.play(cpframe);
-                        Thread.sleep(18);
+                        player.play(b);
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public void end(){
+
+        public void end() {
             isend = false;
         }
     }

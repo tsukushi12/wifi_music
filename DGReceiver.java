@@ -8,8 +8,8 @@ public class DGReceiver {
     public InetAddress ip;
     public int port = 10100;
     public DatagramSocket sock;
-    public byte[] buf = new byte[10000];
-    public DatagramPacket packet = new DatagramPacket(buf, buf.length);
+    public byte[] buf;
+    public DatagramPacket packet;
 
     public static void main(String args[]) {
         try {
@@ -29,6 +29,8 @@ public class DGReceiver {
     DGReceiver() {
         try {
             sock = new DatagramSocket(port, InetAddress.getByName(bindIp4));
+            buf = new byte[10000];
+            packet = new DatagramPacket(buf, buf.length);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,6 +41,7 @@ public class DGReceiver {
         ip = i;
         buf = b;
         sock = new DatagramSocket(port, InetAddress.getByName("0.0.0.0"));
+        packet = new DatagramPacket(buf, buf.length);
         //   sock.connect(ip, port);
     }
 

@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 import java.net.*;
 public class Format {
+    final static int sec = 40;
     public AudioFormat format;
     public AudioFormat.Encoding encoding;
     public float samplerate;
@@ -20,6 +21,9 @@ public class Format {
             System.out.println(format.toString());
             Format f = new Format(format);
             System.out.println(f.toS());
+            f.addTitle("test");
+            Format f2 = new Format(f.toS());
+            System.out.println(f2.toS());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,11 +84,11 @@ public class Format {
     }
 
     public byte[] getSecondSize(){
-        int i = ((int)samplerate * bitrate * channel * 20 / 1000);
+        int i = ((int)samplerate * bitrate * channel * Format.sec / 1000);
         return new byte[i];
     }
     static AudioFormat.Encoding toEncoding(String encoding) {
-        return new AudioFormat.Encoding(encoding);
+        return AudioFormat.Encoding.PCM_SIGNED;
     }
     static float toSampleRate(String sr){
         return Float.parseFloat(sr);

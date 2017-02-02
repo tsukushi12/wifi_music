@@ -30,7 +30,9 @@ public class Player {
             line.flush();
         }
     }
-
+    public boolean isOpen(){
+        return line.isOpen();
+    }
     public void close() {
         line.stop();
         line.close();

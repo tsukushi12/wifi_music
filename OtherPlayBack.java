@@ -1,10 +1,9 @@
 import java.io.*;
-
+import javax.sound.sampled.*;
 public class OtherPlayBack {
     public Format format;
     public Player player = Player.getInstance();
     public DGReceiver receiver;
-
     public static void main(String args[]) {
 
     }
@@ -22,13 +21,14 @@ public class OtherPlayBack {
 
     class OtherPlayThread extends Thread {
         public boolean playflag = true;
+        public byte[] buf;
 
         public void run() {
-            byte[] buf = format.getSecondSize();
             try {
+                int count =0;
                 while (playflag) {
                     buf = receiver.recvToPCM();
-                    System.out.println(buf);
+                    System.out.println(count++);
                     player.play(buf);
                 }
                 receiver.close();

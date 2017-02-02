@@ -11,7 +11,7 @@ public class DGSender {
     public String meta;
     public DatagramPacket packet;
     public InetSocketAddress dest;
-
+    static int count=0;
     public static void main(String args[]) {
         try {
 ////////////////////////////////////////////////////////
