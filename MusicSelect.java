@@ -22,11 +22,11 @@ public class MusicSelect extends JPanel {
         setLayout(layout);
         setBackground(Color.GRAY);
         JLabel label = new JLabel("再生リスト");
-        label.setMaximumSize(new Dimension(4000, 30));
+        label.setMaximumSize(new Dimension(4000, 60));
         label.setBackground(Color.GRAY);
         label.setOpaque(true);
         label.setForeground(Color.WHITE);
-        label.setFont(new Font("メイリオ", Font.PLAIN, 16));
+        label.setFont(new Font("メイリオ", Font.PLAIN, 40));
         label.setHorizontalAlignment(JLabel.CENTER);
         add(label);
     }

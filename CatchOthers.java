@@ -20,11 +20,11 @@ public class CatchOthers extends JPanel {
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(layout);
         label = new JLabel(String.valueOf(CatchOthers.others.size()) + "件");
-        label.setMaximumSize(new Dimension(4000, 30));
+        label.setMaximumSize(new Dimension(4000, 60));
         label.setBackground(Color.GRAY);
         label.setOpaque(true);
         label.setForeground(Color.WHITE);
-        label.setFont(new Font("メイリオ", Font.PLAIN, 16));
+        label.setFont(new Font("メイリオ", Font.PLAIN, 40));
         label.setHorizontalAlignment(JLabel.CENTER);
         setBackground(Color.GRAY);
         add(label);

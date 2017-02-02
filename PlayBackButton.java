@@ -13,8 +13,8 @@ public class PlayBackButton extends JButton implements ActionListener {
         setText(filename);
         setBackground(Color.BLACK);
         setForeground(Color.WHITE);
-        setFont(new Font("メイリオ", Font.PLAIN, 16));
-        setMaximumSize(new Dimension(4000, 40));
+        setFont(new Font("メイリオ", Font.PLAIN, 40));
+        setMaximumSize(new Dimension(4000, 70));
         setActionCommand(filename);
         addActionListener(this);
     }

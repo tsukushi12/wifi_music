@@ -4,8 +4,8 @@ public class MainFrame extends JFrame{
     //title
     final String title = "MGO";
     //frame size
-    final int width = 400;
-    final int height = 300;
+    final int width = 500;
+    final int height = 1000;
     //todo
     //frame position
     final int x = 50;
@@ -18,7 +18,7 @@ public class MainFrame extends JFrame{
     MainFrame(){
          setVisible(true);
          setTitle(title);
-         setBounds(50, 0, 400, 300);
+         setBounds(50, 0, width, height);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          cpane = getContentPane();
     }
